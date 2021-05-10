@@ -9,10 +9,13 @@ public class HomePage {
 
     private By currencyLink = By.cssSelector("#currency-informer > a");
     private By navigationText = By.cssSelector(".b-main-navigation__text");
-    private By quickSearch = By.cssSelector(".fast-search__form > .fast-search__input");
+    private By quickSearch = By.cssSelector(".fast-search__input");
 
     private By resultItems = By.cssSelector("div.result__item");
     private By productDetails = By.cssSelector(".product__details > .product__title");
+
+    private String iFrameId = "#fast-search-modal";
+    private By iPhoneTitle = By.cssSelector(".result__wrapper > .result__item_product > .product__details > .product__title ");
 
 
     public HomePage(WebDriver driver){
@@ -44,5 +47,16 @@ public class HomePage {
         return new ProductPage(driver);
     }
 
+    public void switchToFrame(){
+        driver.switchTo().frame(iFrameId);
+    }
+    public ProductPage clickFirstPhone(){
+        driver.findElement(iPhoneTitle).click();
+        return new ProductPage(driver);
+    }
+
+    public void searchPhone(String name){
+        driver.findElement(quickSearch).sendKeys(name);
+    }
 
 }
