@@ -2,21 +2,14 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HomePage {
     private WebDriver driver;
 
     private By currencyLink = By.cssSelector("#currency-informer > a");
-    private By navigationText = By.cssSelector(".b-main-navigation__text");
     private By quickSearch = By.cssSelector(".fast-search__input");
-
-    private By resultItems = By.cssSelector("div.result__item");
-    private By productDetails = By.cssSelector(".product__details > .product__title");
-
-    private String iFrameId = "#fast-search-modal";
     private By iPhoneTitle = By.cssSelector(".result__wrapper > .result__item_product > .product__details > .product__title ");
-
+    private By iframe2 = By.cssSelector(".modal-iframe");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -27,29 +20,10 @@ public class HomePage {
         return new CurrencyPage(driver);
     }
 
-    // NEED CHECK!!!
-    public String getCatalogMenu(int item){
-        return driver.findElements(navigationText).get(item).getText();
+    public void switchToParentFrame(){
+        driver.switchTo().parentFrame();
     }
 
-    public void searchProduct(String product){
-        driver.findElement(quickSearch).sendKeys(product);
-    }
-
-    public ProductPage selectFirstProduct(){
-        WebElement item = driver.findElements(resultItems).get(0);
-        item.findElement(productDetails).click();
-        return new ProductPage(driver);
-    }
-
-    public ProductPage testMethod_del_it(){
-        driver.get("https://catalog.onliner.by/mobile/apple/iphone7pr128");
-        return new ProductPage(driver);
-    }
-
-    public void switchToFrame(){
-        driver.switchTo().frame(iFrameId);
-    }
     public ProductPage clickFirstPhone(){
         driver.findElement(iPhoneTitle).click();
         return new ProductPage(driver);
@@ -59,4 +33,7 @@ public class HomePage {
         driver.findElement(quickSearch).sendKeys(name);
     }
 
+    public void getCatalog(){
+        driver.switchTo().frame(driver.findElement(iframe2));
+    }
 }

@@ -10,7 +10,6 @@ public class CurrencyPage {
     private By titleText = By.cssSelector(".b-currency-main__top > h1");
     private By amountInput = By.cssSelector("#amount-in");
     private By resultAmount = By.cssSelector(".js-cur-result");
-
     private By elements = By.cssSelector(".b-currency-table__best");
     private By elementsTest = By.cssSelector(".tr-main");
 

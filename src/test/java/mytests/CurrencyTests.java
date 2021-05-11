@@ -23,7 +23,7 @@ public class CurrencyTests extends BaseTests{
         CurrencyPage currPage = homePage.clickCurrency();
         currPage.inputAmount("200");
         String expected = currPage.getResultAmount();
-        assertEquals(expected, "524,8");
+        assertEquals(expected, "507");
     }
 
     @Test
