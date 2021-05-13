@@ -13,12 +13,12 @@ public class ProductTests extends BaseTests{
 
     // Main test
     @Test
-    public void CheckAndDeleteiPhone(){
+    public void CheckAndDeleteIPhone(){
         homePage.searchPhone("Apple iPhone");
         homePage.getCatalog();
         ProductPage iphone = homePage.clickFirstPhone();
         assertTrue(iphone.getTitle().contains("Apple iPhone"), "Not equals");
-        assertTrue(iphone.getDescription().contains("Apple iOS, экран 6.1\" IPS (828x1792), Apple A13 Bionic, ОЗУ 4 ГБ"));
+        assertTrue(iphone.getDescription().contains("Apple iOS"));
         iphone.hoverOverPriceAndBuy(1);
         CartPage cart = iphone.clickOnCart();
         assertEquals(cart.getCartTitle(),"Корзина");

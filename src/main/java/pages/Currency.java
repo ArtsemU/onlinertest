@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -28,6 +29,7 @@ public class Currency {
         return element.findElements(values).get(2).getText();
     }
 
+    @Step
     public double calculatedAmount(double value){
         String x = element.findElements(values).get(0).getText();
         x = x.replace(',','.');
